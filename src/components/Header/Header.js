@@ -22,8 +22,8 @@ const Wrapper = styled.div`
   width: 100%;
   height: ${rem(navbarHeight)};
 
-  font-size: ${rem(18)}
-  font-weight 500;
+  font-size: ${rem(18)};
+  font-weight: 600;
   background: ${props => (props.transparent ? "transparent" : "black")};
   transition: background 300ms ease-out;
   color: white;
@@ -36,15 +36,16 @@ const Wrapper = styled.div`
   flex-flow: row wrap;
 `;
 const StyledDiv = styled.div`
+
   padding: 0 0.5rem;
 `;
 
-const Header = () => {
+const Header = ({onSearchRequest}) => {
   return (
     <Wrapper>
       <GreyGithub/>
       <StyledDiv>Search User via the GitHub API</StyledDiv>
-      <SearchForm/>
+      <SearchForm onSearchRequest={onSearchRequest}/>
     </Wrapper>
   );
 };

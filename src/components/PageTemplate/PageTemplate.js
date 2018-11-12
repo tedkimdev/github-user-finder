@@ -1,11 +1,11 @@
 import React from 'react';
 
-import Header from '../Header'
+import HeaderContainer from '../../containers/common/HeaderContainer'
 
 const PageTemplate = ({children}) => {
   return (
     <div>
-      <Header/>
+      <HeaderContainer/>
       <main>
         {children}
       </main>

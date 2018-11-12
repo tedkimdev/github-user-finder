@@ -1,13 +1,17 @@
 import axios from 'axios';
+import parseLinkHeader from 'parse-link-header';
 
 require('dotenv').config();
 
 const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
 
-console.log(token);
+const defaultParams = {
+  per_page: 50,
+};
+
+// console.log(token);
 const instance = axios.create({
   baseURL: 'https://api.github.com/',
-  
   headers: {'Authorization': token}
 });
 
@@ -27,12 +31,10 @@ const instance = axios.create({
 //     })
 // }
 
-const searchUsersPromise = (completion, params) => {
-  const defaultParams = {
-    per_page: 50,
-  };
+const searchUsersPromiseCallback = (keyword, completion, params) => {
+  
   return instance
-    .get('/search/users?q=ddd', {
+    .get(`/search/users?q=${keyword}`, {
       params: defaultParams,
     })
     .then(res => {
@@ -46,12 +48,9 @@ const searchUsersPromise = (completion, params) => {
     })
 }
 
-const searchUsersAsyncAwait = async (completion, params) => {
+const searchUsersAsyncAwaitCallBack = async (keyword, completion, params) => {
   try {
-    const defaultParams = {
-      per_page: 50,
-    };
-    const response = await instance.get('/search/users?q=ddd', {
+    const response = await instance.get(`/search/users?q=${keyword}`, {
       params: defaultParams,
     });
     // console.log(response);
@@ -65,6 +64,23 @@ const searchUsersAsyncAwait = async (completion, params) => {
 }
 
 
+const searchUsers = async (keyword, params) => {
+  try {
+    const response = await instance.get(`/search/users?q=${keyword}`, {
+      params: defaultParams,
+    });
+
+    return { response: addPagination(response) };
+  } catch (error) {
+    return { error };
+  }
+}
+
+const addPagination = (response) => {
+  const { data, headers } = response;
+  const pagination = parseLinkHeader(headers.link);
+  return { data, pagination };
+}
 
 const getProfile = (completion, username) => {
   return instance.get(`/users/${username}`);
@@ -72,7 +88,8 @@ const getProfile = (completion, username) => {
 
 
 export default {
-  searchUsersPromise,
   getProfile,
-  searchUsersAsyncAwait
+  searchUsersPromiseCallback,
+  searchUsersAsyncAwaitCallBack,
+  searchUsers
 };
