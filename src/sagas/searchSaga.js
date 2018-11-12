@@ -1,21 +1,21 @@
-import { takeLatest, call, put } from 'redux-saga/effects';
-import { searchActions, searchTypes } from '../store/ducks/search';
+import { takeLatest, call, put } from "redux-saga/effects";
+import { searchActions, searchTypes } from "../store/ducks/search";
 
-import GitHubAPI from '../api/GitHubAPIService';
+import GitHubAPI from "../api/GitHubAPIService";
 
 export function* searchUsersCallBack(action) {
   console.log(action);
   const { keyword } = action;
 
-  yield GitHubAPI.searchUsersAsyncAwaitCallBack(keyword, (result)=>{
+  yield GitHubAPI.searchUsersAsyncAwaitCallBack(keyword, result => {
     // do something
   });
 }
 
 export function* searchUsers(action) {
-  const  keyword = action.payload;
+  const keyword = action.payload;
   const { response, error } = yield call(GitHubAPI.searchUsers, keyword);
-  
+
   if (response) {
     // console.log(response);
     const normalizedResponse = {
@@ -27,7 +27,7 @@ export function* searchUsers(action) {
     yield put(searchActions.searchSuccess(normalizedResponse));
   } else {
     // console.log(error);
-    yield put(searchActions.searchFailure(error))
+    yield put(searchActions.searchFailure(error));
   }
 }
 

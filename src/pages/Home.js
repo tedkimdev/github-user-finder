@@ -1,14 +1,11 @@
 import React from "react";
 
-import PageTemplate from '../components/PageTemplate'
-
+import PageTemplate from "../components/PageTemplate";
 
 const Home = () => {
   return (
     <PageTemplate>
-      <div>
-        Home~!
-      </div>
+      <div>Home~!</div>
     </PageTemplate>
   );
 };

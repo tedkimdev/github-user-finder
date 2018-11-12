@@ -2,12 +2,12 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { Github } from "styled-icons/fa-brands/Github";
 
-import { mobile, phone } from '../../utils/media';
-import rem from '../../utils/rem';
+import { mobile, phone } from "../../utils/media";
+import rem from "../../utils/rem";
 
-import { navbarHeight } from '../../constants/sizes';
+import { navbarHeight } from "../../constants/sizes";
 
-import SearchForm from './SearchForm';
+import SearchForm from "./SearchForm";
 
 const GreyGithub = styled(Github)`
   color: grey;
@@ -36,16 +36,15 @@ const Wrapper = styled.div`
   flex-flow: row wrap;
 `;
 const StyledDiv = styled.div`
-
   padding: 0 0.5rem;
 `;
 
-const Header = ({onSearchRequest}) => {
+const Header = ({ onSearchRequest }) => {
   return (
     <Wrapper>
-      <GreyGithub/>
+      <GreyGithub />
       <StyledDiv>Search User via the GitHub API</StyledDiv>
-      <SearchForm onSearchRequest={onSearchRequest}/>
+      <SearchForm onSearchRequest={onSearchRequest} />
     </Wrapper>
   );
 };

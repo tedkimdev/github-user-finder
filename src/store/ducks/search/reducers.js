@@ -14,13 +14,13 @@ const searchReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: true
       });
-    
-      case SEARCH_SUCCESS:
+
+    case SEARCH_SUCCESS:
       return Object.assign({}, state, action.payload, {
         isLoading: false,
         error: null
       });
-      
+
     case SEARCH_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,

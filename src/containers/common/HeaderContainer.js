@@ -1,7 +1,7 @@
-import Header from '../../components/Header';
-import { connect } from 'react-redux';
+import Header from "../../components/Header";
+import { connect } from "react-redux";
 
-import { searchActions } from '../../store/ducks/search';
+import { searchActions } from "../../store/ducks/search";
 
 // const mapStateToProps = state => {
 //   return {
@@ -12,9 +12,12 @@ import { searchActions } from '../../store/ducks/search';
 const mapDispatchToProps = dispatch => {
   return {
     onSearchRequest: keyword => {
-      dispatch(searchActions.searchRequest(keyword))
+      dispatch(searchActions.searchRequest(keyword));
     }
-  }
-}
+  };
+};
 
-export default connect(null, mapDispatchToProps)(Header);
+export default connect(
+  null,
+  mapDispatchToProps
+)(Header);

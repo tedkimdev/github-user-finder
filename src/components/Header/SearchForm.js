@@ -3,13 +3,11 @@ import React, { Component } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import { Search } from "styled-icons/material";
 
-import { mobile, phone } from '../../utils/media';
-import rem from '../../utils/rem';
-import { resetInput } from '../../utils/form';
-
+import { mobile, phone } from "../../utils/media";
+import rem from "../../utils/rem";
+import { resetInput } from "../../utils/form";
 
 const INPUT_ID = "user-search-input";
-
 
 const GreySearch = styled(Search)`
   color: grey;
@@ -20,7 +18,6 @@ const GreySearch = styled(Search)`
 const FormWrapper = styled.form`
   display: flex;
   align-items: center;
-  
 `;
 
 const Input = styled.input`
@@ -53,7 +50,7 @@ const Button = styled.label.attrs({
   htmlFor: INPUT_ID
 })`
   ${resetInput};
-  
+
   cursor: pointer;
   display: flex;
   &:hover,
@@ -66,7 +63,7 @@ const Button = styled.label.attrs({
   }
 `;
 
-const setInputValue = (input) => (state) => ({
+const setInputValue = input => state => ({
   input: input
 });
 
@@ -74,7 +71,7 @@ class SearchForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      input: ''
+      input: ""
     };
     this.inputRef = React.createRef();
   }
@@ -82,26 +79,26 @@ class SearchForm extends Component {
   handleKeyPress = e => {
     const { onSearchRequest } = this.props;
     const { input } = this.state;
-    if(input === '') return;
-    if(e.key === 'Enter') {
+    if (input === "") return;
+    if (e.key === "Enter") {
       onSearchRequest(input);
     }
-  }
-  
+  };
+
   handleChange = e => {
     this.setState(setInputValue(e.target.value));
-  }
+  };
 
   handleSubmit = e => {
     e.preventDefault();
-  }
+  };
 
   handleClick = () => {
     const { onSearchRequest } = this.props;
     const { input } = this.state;
-    if(input === '') return;
+    if (input === "") return;
     onSearchRequest(input);
-  }
+  };
 
   render() {
     return (
@@ -119,12 +116,11 @@ class SearchForm extends Component {
           type="text"
         />
         <Button onClick={this.handleClick}>
-          <GreySearch/>
+          <GreySearch />
         </Button>
       </FormWrapper>
     );
   }
-  
 }
 
 export default SearchForm;

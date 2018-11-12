@@ -5,11 +5,11 @@ export const searchRequest = keyword => ({
   payload: keyword
 });
 
-export const searchSuccess = (result) => ({
+export const searchSuccess = result => ({
   type: types.SEARCH_SUCCESS,
   payload: result
 });
-export const searchFailure = (error) => ({
+export const searchFailure = error => ({
   type: types.SEARCH_FAILURE,
   payload: error
 });
