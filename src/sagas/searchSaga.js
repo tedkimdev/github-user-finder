@@ -25,6 +25,7 @@ export function* searchUsers(action) {
     };
 
     yield put(searchActions.searchSuccess(normalizedResponse));
+    //TODO: put limit count later
   } else {
     // console.log(error);
     yield put(searchActions.searchFailure(error));

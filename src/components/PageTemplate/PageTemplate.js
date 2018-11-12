@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-import HeaderContainer from "../../containers/common/HeaderContainer";
-
 import { navbarHeight } from "../../constants/sizes";
 import rem from "../../utils/rem";
+
+import HeaderContainer from "../../containers/common/HeaderContainer";
 
 const MainWrapper = styled.main`
   padding-top: ${rem(navbarHeight)};
