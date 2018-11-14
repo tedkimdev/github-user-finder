@@ -19,7 +19,7 @@ export function* searchUsers(action) {
   if (response) {
     // console.log(response);
     const normalizedResponse = {
-      users: response.data.items,
+      users: response.data.users,
       totalResults: response.data.total_count,
       pagination: response.pagination
     };

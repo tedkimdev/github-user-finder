@@ -74,10 +74,31 @@ const searchUsers = async (keyword, params) => {
   }
 };
 
+const normalizeUser = user => ({
+  login: user.login,
+  id: user.id,
+  node_id: user.node_id,
+  avatar_url: user.avatar_url,
+  html_url: user.html_url
+});
+
 const addPagination = response => {
   const { data, headers } = response;
+
   const pagination = parseLinkHeader(headers.link);
-  return { data, pagination };
+  return {
+    data: {
+      ...data,
+      //       //TODO: delete items
+      //       var clone = Object.assign({}, { a: 1, b: 2, c: 3 });
+      //       delete clone.b;
+      //       or if you accept property to be undefined:
+
+      // var clone = Object.assign({}, { a: 1, b: 2, c: 3 }, { b: undefined });
+      users: data.items.map(item => normalizeUser(item)),
+      pagination
+    }
+  };
 };
 
 const getProfile = (completion, username) => {
