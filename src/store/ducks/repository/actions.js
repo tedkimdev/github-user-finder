@@ -14,7 +14,7 @@ export const repositoryFailure = error => ({
 });
 
 export default {
-  repositoriesRequest,
-  repositoriesSuccess,
-  repositoriesFailure
+  repositoryRequest,
+  repositorySuccess,
+  repositoryFailure
 };

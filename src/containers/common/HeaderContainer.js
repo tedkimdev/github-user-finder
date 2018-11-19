@@ -1,7 +1,14 @@
-import Header from "../../components/Header";
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
+import Header from "../../components/Header";
 import { searchActions } from "../../store/ducks/search";
+
+class HeaderContainer extends Component {
+  //TODO: query string,
+  // location, history, match
+}
 
 // const mapStateToProps = state => {
 //   return {
@@ -20,4 +27,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps
-)(Header);
+)(withRouter(Header));

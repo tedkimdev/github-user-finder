@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import { Github } from "styled-icons/fa-brands/Github";
+import { Link } from "react-router-dom";
 
 import { mobile, phone } from "../../utils/media";
 import rem from "../../utils/rem";
@@ -42,7 +43,9 @@ const StyledDiv = styled.div`
 const Header = ({ onSearchRequest }) => {
   return (
     <Wrapper>
-      <GreyGithub />
+      <Link to="/">
+        <GreyGithub />
+      </Link>
       <StyledDiv>Search User via the GitHub API</StyledDiv>
       <SearchForm onSearchRequest={onSearchRequest} />
     </Wrapper>

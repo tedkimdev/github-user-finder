@@ -1,0 +1,9 @@
+export const PROFILE_REQUEST = "profile/PROFILE_REQUEST";
+export const PROFILE_SUCCESS = "profile/PROFILE_SUCCESS";
+export const PROFILE_FAILURE = "profile/PROFILE_FAILURE";
+
+export default {
+  PROFILE_REQUEST,
+  PROFILE_SUCCESS,
+  PROFILE_FAILURE
+};

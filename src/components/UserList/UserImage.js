@@ -8,7 +8,7 @@ const Wrapper = styled.div`
 const ImageWrapper = styled.img`
   width: 100%;
   height: auto;
-  border-radius: 8px;
+  border-radius: 50%;
 `;
 
 class UserImage extends Component {

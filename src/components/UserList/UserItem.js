@@ -45,7 +45,7 @@ const StyledDiv = styled.div`
 
 const UserItem = ({ user }) => {
   return (
-    <StyledLink to={user.login}>
+    <StyledLink to={`/user/${user.login}`}>
       <UserImageContainer>
         <UserImage url={user.avatar_url} name={user.login} />
       </UserImageContainer>

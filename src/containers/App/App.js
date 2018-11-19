@@ -1,24 +1,19 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import "./App.css";
 
 import Home from "../../pages/Home";
+import ProfilePage from "../../pages/ProfilePage";
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Route exact path="/" component={Home} />
-          <Route
-            children={() => (
-              <div>
-                <br />
-                Always Rendered
-              </div>
-            )}
-          />
-        </div>
+        <Switch>
+          <Route exact path="/search" component={Home} />
+          <Route exact path="/user/:username" component={ProfilePage} />
+          <Redirect to="/search" />
+        </Switch>
       </BrowserRouter>
     );
   }
