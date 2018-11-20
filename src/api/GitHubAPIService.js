@@ -130,9 +130,24 @@ const getProfile = async username => {
   }
 };
 
+const getDataFromURL = async (url, perPage) => {
+  try {
+    const response = await instance.get(url, {
+      params: {
+        per_page: perPage
+      }
+    });
+    console.log(response);
+    return { response };
+  } catch (error) {
+    return { error };
+  }
+};
+
 export default {
   getProfile,
   searchUsersPromiseCallback,
   searchUsersAsyncAwaitCallBack,
-  searchUsers
+  searchUsers,
+  getDataFromURL
 };
