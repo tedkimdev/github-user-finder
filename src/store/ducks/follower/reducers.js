@@ -12,16 +12,19 @@ const followerReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: true
       });
+
     case FOLLOWER_SUCCESS:
       return Object.assign({}, state, action.payload, {
         isLoading: false,
         followers: action.payload
       });
+
     case FOLLOWER_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
         error: action.payload
       });
+
     default:
       return state;
   }

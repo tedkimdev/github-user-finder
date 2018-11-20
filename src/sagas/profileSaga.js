@@ -6,8 +6,8 @@ import { repositoryActions } from "../store/ducks/repository";
 import GitHubAPI from "../api/GitHubAPIService";
 
 function* requestAdditionalInfomation(data) {
-  yield put(repositoryActions.repositoryRequest(data.repos_url));
   yield put(followerActions.followerRequest(data.followers_url));
+  yield put(repositoryActions.repositoryRequest(data.repos_url));
 }
 
 export function* getProfile(action) {
