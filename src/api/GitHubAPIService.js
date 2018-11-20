@@ -74,7 +74,7 @@ const searchUsers = async (keyword, params) => {
   }
 };
 
-const normalizeUser = user => ({
+const normalizedUser = user => ({
   login: user.login,
   id: user.id,
   node_id: user.node_id,
@@ -95,14 +95,39 @@ const addPagination = response => {
       //       or if you accept property to be undefined:
 
       // var clone = Object.assign({}, { a: 1, b: 2, c: 3 }, { b: undefined });
-      users: data.items.map(item => normalizeUser(item)),
+      users: data.items.map(item => normalizedUser(item)),
       pagination
     }
   };
 };
 
-const getProfile = (completion, username) => {
-  return instance.get(`/users/${username}`);
+const normalizedProfile = profile => ({
+  avatar_url: profile.avatar_url,
+  bio: profile.bio,
+  blog: profile.blog,
+  company: profile.company,
+  followers: profile.followers,
+  followers_url: profile.followers_url,
+  following: profile.following,
+  html_url: profile.html_url,
+  location: profile.location,
+  login: profile.login,
+  id: profile.id,
+  name: profile.name,
+  public_gists: profile.public_gists,
+  public_repos: profile.public_repos,
+  repos_url: profile.repos_url
+});
+
+const getProfile = async username => {
+  try {
+    const response = await instance.get(`/users/${username}`);
+    // console.log(response);
+    response.data = normalizedProfile(response.data);
+    return { response };
+  } catch (error) {
+    return { error };
+  }
 };
 
 export default {

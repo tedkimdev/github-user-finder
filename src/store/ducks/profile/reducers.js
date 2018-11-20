@@ -12,16 +12,19 @@ const profileReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         isLoading: true
       });
+
     case PROFILE_SUCCESS:
-      return Object.assign({}, state, action.payload, {
+      return Object.assign({}, state, {
         isLoading: false,
         userProfile: action.payload
       });
+
     case PROFILE_FAILURE:
       return Object.assign({}, state, {
         isLoading: false,
         error: action.payload
       });
+
     default:
       return state;
   }

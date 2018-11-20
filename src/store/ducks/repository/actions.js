@@ -1,8 +1,8 @@
 import types from "./types";
 
-export const repositoryRequest = value => ({
+export const repositoryRequest = url => ({
   type: types.REPOSITORY_REQUEST,
-  payload: value
+  payload: url
 });
 export const repositorySuccess = result => ({
   type: types.REPOSITORY_SUCCESS,
