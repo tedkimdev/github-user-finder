@@ -1,5 +1,5 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { followerActions, followerTypes } from "../store/ducks/follower";
+import { followerActions, followerTypes } from "../store/modules/follower";
 
 import GitHubAPI from "../api/GitHubAPIService";
 

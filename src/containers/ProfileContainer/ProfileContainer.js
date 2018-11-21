@@ -3,7 +3,8 @@ import { withRouter } from "react-router-dom";
 
 import { connect } from "react-redux";
 
-import { profileActions } from "../../store/ducks/profile";
+import { profileActions } from "../../store/modules/profile";
+import ProfileHeader from "../../components/ProfileHeader";
 
 class ProfileContainer extends Component {
   constructor(props) {
@@ -19,12 +20,18 @@ class ProfileContainer extends Component {
   }
 
   render() {
-    return <div>ProfileContainer</div>;
+    const { userProfile } = this.props;
+    return (
+      <>
+        <ProfileHeader userProfile={userProfile} />
+        ProfileContainer
+      </>
+    );
   }
 }
 
 const mapStateToProps = state => ({
-  userProfile: state.profile.profile,
+  userProfile: state.profile.userProfile,
   isLoading: state.profile.isLoading
 });
 

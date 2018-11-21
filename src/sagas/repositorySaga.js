@@ -1,5 +1,8 @@
 import { call, put, select, takeLatest } from "redux-saga/effects";
-import { repositoryActions, repositoryTypes } from "../store/ducks/repository";
+import {
+  repositoryActions,
+  repositoryTypes
+} from "../store/modules/repository";
 
 import GitHubAPI from "../api/GitHubAPIService";
 

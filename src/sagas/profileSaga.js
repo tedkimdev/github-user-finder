@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import { profileActions, profileTypes } from "../store/ducks/profile";
-import { followerActions } from "../store/ducks/follower";
-import { repositoryActions } from "../store/ducks/repository";
+import { profileActions, profileTypes } from "../store/modules/profile";
+import { followerActions } from "../store/modules/follower";
+import { repositoryActions } from "../store/modules/repository";
 
 import GitHubAPI from "../api/GitHubAPIService";
 

@@ -6,7 +6,6 @@ import ProfileContainer from "../containers/ProfileContainer/ProfileContainer";
 const ProfilePage = () => {
   return (
     <PageTemplate>
-      <div>ProfilePage</div>
       <ProfileContainer />
     </PageTemplate>
   );

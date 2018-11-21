@@ -137,7 +137,7 @@ const getDataFromURL = async (url, perPage) => {
         per_page: perPage
       }
     });
-    console.log(response);
+    // console.log(response);
     return { response };
   } catch (error) {
     return { error };

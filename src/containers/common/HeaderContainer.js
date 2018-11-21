@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "../../components/Header";
-import { searchActions } from "../../store/ducks/search";
+import { searchActions } from "../../store/modules/search";
 
 class HeaderContainer extends Component {
   //TODO: query string,

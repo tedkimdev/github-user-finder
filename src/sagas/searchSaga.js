@@ -1,5 +1,5 @@
 import { takeLatest, call, put } from "redux-saga/effects";
-import { searchActions, searchTypes } from "../store/ducks/search";
+import { searchActions, searchTypes } from "../store/modules/search";
 
 import GitHubAPI from "../api/GitHubAPIService";
 
