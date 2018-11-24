@@ -130,6 +130,16 @@ const getProfile = async username => {
   }
 };
 
+const getRateLimit = async () => {
+  try {
+    const response = await instance.get(`/rate_limit`);
+    // console.log(response);
+    return { response };
+  } catch (error) {
+    return { error };
+  }
+};
+
 const getDataFromURL = async (url, perPage) => {
   try {
     const response = await instance.get(url, {
@@ -149,5 +159,6 @@ export default {
   searchUsersPromiseCallback,
   searchUsersAsyncAwaitCallBack,
   searchUsers,
-  getDataFromURL
+  getDataFromURL,
+  getRateLimit
 };
