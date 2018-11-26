@@ -4,9 +4,9 @@ export const repositoryRequest = url => ({
   type: types.REPOSITORY_REQUEST,
   payload: url
 });
-export const repositorySuccess = result => ({
+export const repositorySuccess = repositories => ({
   type: types.REPOSITORY_SUCCESS,
-  payload: result
+  payload: repositories
 });
 export const repositoryFailure = error => ({
   type: types.REPOSITORY_FAILURE,

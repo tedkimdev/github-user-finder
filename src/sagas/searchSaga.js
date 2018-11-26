@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import { searchActions, searchTypes } from "../store/modules/search";
+import { requestLimitActions } from "../store/modules/requestLimit";
 
 import GitHubAPI from "../api/GitHubAPIService";
 
@@ -25,7 +26,7 @@ export function* searchUsers(action) {
     };
 
     yield put(searchActions.searchSuccess(normalizedResponse));
-    //TODO: put limit count later
+    yield put(requestLimitActions.requestLimitRequest());
   } else {
     // console.log(error);
     yield put(searchActions.searchFailure(error));

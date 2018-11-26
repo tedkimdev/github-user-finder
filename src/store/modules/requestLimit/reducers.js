@@ -8,7 +8,7 @@ import {
 const initialState = {
   core: {},
   search: {},
-  rate: {}
+  remaining: {}
 };
 
 const requestLimitReducer = (state = initialState, action) => {
@@ -19,10 +19,8 @@ const requestLimitReducer = (state = initialState, action) => {
       });
 
     case REQUEST_COUNT_LIMIT_NOT_EXCEED:
-      return Object.assign({}, state, action.payload, {
-        core: action.payload.profile,
-        search: action.payload.search,
-        rate: action.payload.rate
+      return Object.assign({}, state, {
+        payload: action.payload
       });
 
     case REQUEST_SEARCH_COUNT_INCREASED:

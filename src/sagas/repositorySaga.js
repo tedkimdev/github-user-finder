@@ -1,4 +1,4 @@
-import { call, put, select, takeLatest } from "redux-saga/effects";
+import { call, put, takeLatest } from "redux-saga/effects";
 import {
   repositoryActions,
   repositoryTypes
@@ -7,12 +7,12 @@ import {
 import GitHubAPI from "../api/GitHubAPIService";
 
 export function* getRepositories(action) {
-  console.log("getRepositories", action);
   const url = action.payload;
   const { response, error } = yield call(GitHubAPI.getDataFromURL, url, 8);
 
   if (response) {
     console.log(response);
+    yield put(repositoryActions.repositorySuccess(response.data));
   } else {
     console.log(error);
   }

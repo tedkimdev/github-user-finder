@@ -5,6 +5,7 @@ import { default as searchSaga } from "./searchSaga";
 import { default as profileSaga } from "./profileSaga";
 import { default as followerSaga } from "./followerSaga";
 import { default as repositorySaga } from "./repositorySaga";
+import { default as requestLimitSaga } from "./requestLimitSaga";
 
 export default function* rootSaga() {
   yield all([
@@ -12,6 +13,7 @@ export default function* rootSaga() {
     ...searchSaga,
     ...profileSaga,
     ...followerSaga,
-    ...repositorySaga
+    ...repositorySaga,
+    ...requestLimitSaga
   ]);
 }

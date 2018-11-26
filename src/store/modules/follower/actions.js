@@ -5,8 +5,9 @@ export const followerRequest = url => ({
   payload: url
 });
 
-export const followerSuccess = () => ({
-  type: types.FOLLOWER_SUCCESS
+export const followerSuccess = follwers => ({
+  type: types.FOLLOWER_SUCCESS,
+  payload: follwers
 });
 
 export const followerFailure = () => ({
