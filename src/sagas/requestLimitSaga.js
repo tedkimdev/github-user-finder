@@ -35,7 +35,7 @@ export function* getRateLimit(actions) {
   console.log("getRateLimit", actions);
   try {
     const response = yield call(GitHubAPI.getRateLimit);
-    console.log("getRateLimit", response.response.data);
+    // console.log("getRateLimit", response.response.data);
     const data = response.response.data;
 
     const normalizedData = {
@@ -54,7 +54,7 @@ export function* getRateLimit(actions) {
   }
 }
 
-export function* watchGetRequestLimit() {
+export function* watchSuccesses() {
   const actionsTypes = [
     repositoryTypes.REPOSITORY_SUCCESS,
     profileTypes.PROFILE_SUCCESS,
@@ -63,23 +63,7 @@ export function* watchGetRequestLimit() {
 
   yield [
     combineLatest(actionsTypes, getRateLimit),
-    // ...? here or in searchSaga..?
-    // takeLatest(searchTypes.SEARCH_SUCCESS, getRateLimit),
-    takeLatest(requestLimitTypes.REQUEST_LIMIT_REQUEST, getRateLimit)
-  ];
-}
-
-export function* watchRequests() {
-  const actionsTypes = [
-    repositoryTypes.REPOSITORY_SUCCESS,
-    profileTypes.PROFILE_SUCCESS,
-    followerTypes.FOLLOWER_SUCCESS
-  ];
-
-  yield [
-    combineLatest(actionsTypes, getRateLimit),
-    // ...? here or in searchSaga..?
-    // takeLatest(searchTypes.SEARCH_SUCCESS, getRateLimit),
+    takeLatest(searchTypes.SEARCH_SUCCESS, getRateLimit),
     takeLatest(requestLimitTypes.REQUEST_LIMIT_REQUEST, getRateLimit)
   ];
 }
@@ -93,5 +77,5 @@ export function* watchErrors() {
   ];
 }
 
-const requestLimitSaga = [watchRequests(), watchErrors()];
+const requestLimitSaga = [watchSuccesses(), watchErrors()];
 export default requestLimitSaga;

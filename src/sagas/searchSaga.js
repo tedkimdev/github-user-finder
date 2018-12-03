@@ -26,7 +26,6 @@ export function* searchUsers(action) {
     };
 
     yield put(searchActions.searchSuccess(normalizedResponse));
-    yield put(requestLimitActions.requestLimitRequest());
   } else {
     // console.log(error);
     yield put(searchActions.searchFailure(error));
