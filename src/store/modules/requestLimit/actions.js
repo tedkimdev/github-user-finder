@@ -16,18 +16,8 @@ export const requestCountLimitNotExceed = result => {
   };
 };
 
-export const requestSearchCountIncreased = () => ({
-  type: types.REQUEST_SEARCH_COUNT_INCREASED
-});
-
-export const requestProfileCountIncreased = () => ({
-  type: types.REQUEST_PROFILE_COUNT_INCREASED
-});
-
 export default {
   requestLimitRequest,
   requestCountLimitExceed,
-  requestCountLimitNotExceed,
-  requestSearchCountIncreased,
-  requestProfileCountIncreased
+  requestCountLimitNotExceed
 };

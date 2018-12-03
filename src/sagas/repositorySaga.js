@@ -14,7 +14,7 @@ export function* getRepositories(action) {
     console.log(response);
     yield put(repositoryActions.repositorySuccess(response.data));
   } else {
-    console.log(error);
+    yield put(repositoryActions.repositoryFailure(error));
   }
 }
 

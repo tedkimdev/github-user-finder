@@ -5,7 +5,7 @@ import { navbarHeight } from "../../constants/sizes";
 import rem from "../../utils/rem";
 
 import HeaderContainer from "../../containers/common/HeaderContainer";
-import Footer from "../../components/Footer";
+import FooterContainer from "../../containers/common/FooterContainer";
 
 const MainWrapper = styled.main`
   padding-top: ${rem(navbarHeight)};
@@ -16,7 +16,7 @@ const PageTemplate = ({ children }) => {
     <div>
       <HeaderContainer />
       <MainWrapper>{children}</MainWrapper>
-      <Footer />
+      <FooterContainer />
     </div>
   );
 };

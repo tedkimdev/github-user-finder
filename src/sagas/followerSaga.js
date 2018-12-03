@@ -13,6 +13,7 @@ export function* getFollowers(action) {
     yield put(followerActions.followerSuccess(response.data));
   } else {
     console.log(error);
+    yield put(followerActions.followerFailure(error));
   }
 }
 

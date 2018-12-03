@@ -1,34 +1,25 @@
 import {
   REQUEST_COUNT_LIMIT_EXCEED,
-  REQUEST_COUNT_LIMIT_NOT_EXCEED,
-  REQUEST_SEARCH_COUNT_INCREASED,
-  REQUEST_PROFILE_COUNT_INCREASED
+  REQUEST_COUNT_LIMIT_NOT_EXCEED
 } from "./types";
 
 const initialState = {
-  core: {},
-  search: {},
-  remaining: {}
+  remaining: 60,
+  core: 60,
+  search: 10
 };
 
 const requestLimitReducer = (state = initialState, action) => {
   switch (action.type) {
     case REQUEST_COUNT_LIMIT_EXCEED:
       return Object.assign({}, state, {
-        payload: action.payload
+        ...action.payload
       });
 
     case REQUEST_COUNT_LIMIT_NOT_EXCEED:
       return Object.assign({}, state, {
-        payload: action.payload
+        ...action.payload
       });
-
-    case REQUEST_SEARCH_COUNT_INCREASED:
-      return state;
-    //TODO: profile, search count increased
-
-    case REQUEST_PROFILE_COUNT_INCREASED:
-      return state;
 
     default:
       return state;
