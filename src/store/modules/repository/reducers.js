@@ -18,9 +18,10 @@ const repositoryReducer = (state = initialState, action) => {
       });
 
     case REPOSITORY_SUCCESS:
-      return Object.assign({}, state, action.payload, {
+      return Object.assign({}, state, {
         isLoading: false,
-        error: null
+        error: null,
+        repositories: action.payload
       });
 
     case REPOSITORY_FAILURE:
