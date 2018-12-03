@@ -22,9 +22,9 @@ export function* searchUsers(action) {
     const normalizedResponse = {
       users: response.data.users,
       totalResults: response.data.total_count,
-      pagination: response.pagination
+      pagination: response.data.pagination
     };
-
+    // console.log("@", normalizedResponse);
     yield put(searchActions.searchSuccess(normalizedResponse));
   } else {
     // console.log(error);

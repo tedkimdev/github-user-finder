@@ -1,12 +1,12 @@
 import React from "react";
 
 import PageTemplate from "../components/PageTemplate";
-import UserListContainer from "../containers/UserListContainer";
+import SearchResultContainer from "../containers/SearchResultContainer";
 
 const Home = () => {
   return (
     <PageTemplate>
-      <UserListContainer />
+      <SearchResultContainer />
     </PageTemplate>
   );
 };

@@ -15,16 +15,23 @@ class ProfileContainer extends Component {
     const { match } = this.props;
     const { username } = match.params;
 
-    console.log("componentDidMount", this.props.isLoading);
+    // console.log("componentDidMount", this.props.isLoading);
     this.props.getProfile(username);
   }
 
   render() {
     const { userProfile } = this.props;
+    if (!userProfile) {
+      //TODO:
+      return <div>Error</div>;
+    }
     return (
       <>
         <ProfileHeader userProfile={userProfile} />
-        ProfileContainer
+        <div>
+          <div>Repositories</div>
+          <div>Followers</div>
+        </div>
       </>
     );
   }
