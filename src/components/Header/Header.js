@@ -3,7 +3,7 @@ import styled, { css } from "styled-components";
 import { Github } from "styled-icons/fa-brands/Github";
 import { Link } from "react-router-dom";
 
-import { mobile, phone } from "../../utils/media";
+import { medium } from "../../utils/media";
 import rem from "../../utils/rem";
 
 import { navbarHeight } from "../../constants/sizes";
@@ -21,14 +21,17 @@ const Wrapper = styled.div`
   top: 0;
   left: 0;
   width: 100%;
-  height: ${rem(navbarHeight)};
+  height: ${rem(navbarHeight + 30)};
+
+  ${medium(css`
+    height: ${rem(navbarHeight)};
+  `)}
 
   font-size: ${rem(18)};
   font-weight: 600;
   background: ${props => (props.transparent ? "transparent" : "black")};
   transition: background 300ms ease-out;
   color: white;
-  padding: 4px;
 
   display: flex;
   align-items: center;

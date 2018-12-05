@@ -2,12 +2,25 @@ import React from "react";
 import UserList from "../../components/UserList";
 import { connect } from "react-redux";
 
+import styled from "styled-components";
+import rem from "../../utils/rem";
+
+const SearchResultCount = styled.div`
+  margin: 0 auto;
+  margin-top: 8px;
+  text-align: center;
+  font-size: ${rem(24)};
+  font-weight: 600;
+`;
+
 // profile actions
 
 const SearchResultContainer = ({ users, totalResults, pagination }) => {
   return (
-    <>
-      {users.length > 0 && <div>Found {totalResults} users</div>}
+    <React.Fragment>
+      {users.length > 0 && (
+        <SearchResultCount>Found {totalResults} users</SearchResultCount>
+      )}
       <UserList users={users} />
       {users.length > 0 && (
         <div>
@@ -15,7 +28,7 @@ const SearchResultContainer = ({ users, totalResults, pagination }) => {
           <div>last {pagination.last.url}</div>
         </div>
       )}
-    </>
+    </React.Fragment>
   );
 };
 

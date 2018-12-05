@@ -11,3 +11,15 @@ export const phone = inner => css`
     ${inner};
   }
 `;
+
+export const large = inner => css`
+  @media (min-width: ${1000 / 16}em) {
+    ${inner};
+  }
+`;
+
+export const medium = inner => css`
+  @media (min-width: ${600 / 16}em) {
+    ${inner};
+  }
+`;

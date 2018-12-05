@@ -6,7 +6,7 @@ require("dotenv").config();
 const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
 
 const defaultParams = {
-  per_page: 50
+  per_page: 48
 };
 
 // console.log(token);

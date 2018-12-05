@@ -24,12 +24,13 @@ const StyledLink = styled(Link)`
   )};
 
   display: flex;
-  background: lightGrey;
   border-radius: 8px;
   align-items: center;
   text-decoration: none;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.07);
   margin: 4px;
-  padding: 4px;
 `;
 
 const UserImageContainer = styled.div`
@@ -41,6 +42,8 @@ const UserImageContainer = styled.div`
 
 const StyledDiv = styled.div`
   overflow: hidden;
+  color: black;
+  font-size: ${rem(24)};
 `;
 
 const UserItem = ({ user }) => {
