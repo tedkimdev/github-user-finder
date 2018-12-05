@@ -10,7 +10,7 @@ const Container = styled.div`
   overflow: hidden;
 
   width: 100%;
-
+  background: white;
   margin-bottom: 10px;
 `;
 
@@ -22,7 +22,7 @@ const Photo = styled.div`
 
   width: 80px;
   height: 100%;
-  margin-right 20px;
+  margin-right: 20px;
 `;
 
 const Content = styled.div`
@@ -30,7 +30,7 @@ const Content = styled.div`
   color: white;
   background-color: white;
 
-  width: calc(100%);
+  width: calc(100% - 100px);
   height: 100%;
 
   display: flex;

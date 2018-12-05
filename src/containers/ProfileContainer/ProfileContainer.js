@@ -10,6 +10,7 @@ import styled, { css } from "styled-components";
 import { medium, large } from "../../utils/media";
 
 import CardUser from "../../components/CardUser";
+import Link from "../../components/Link";
 
 const StyledCardUser = styled(CardUser)`
   height: 80px;
@@ -24,7 +25,6 @@ const FollowersWrapper = styled.div`
   & > h2 {
   }
   & > div {
-    background: blue;
   }
 `;
 
@@ -46,26 +46,42 @@ const ProfileContent = styled.div`
 
   ${medium(css`
     ${RepositoriesWrapper} {
-      flex: 1 40%;
+      flex: 0 40%;
     }
     ${FollowersWrapper} {
-      flex: 1 40%;
+      flex: 0 40%;
+    }
+  `)};
+
+  ${large(css`
+    ${RepositoriesWrapper} {
+      flex: 0 30%;
+    }
+    ${FollowersWrapper} {
+      flex: 0 30%;
     }
   `)};
 `;
 const Wrapper = styled.div``;
 
 class ProfileContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   componentDidMount() {
     const { match } = this.props;
     const { username } = match.params;
 
-    // console.log("componentDidMount", this.props.isLoading);
+    //TODO: click
+    console.log("componentDidMount", this.props.isLoading);
+    console.log("componentDidMount", username);
     this.props.getProfile(username);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevUsername = prevProps.match.params.username;
+    const { username } = this.props.match.params;
+    console.log(prevUsername, username);
+    if (prevUsername !== username) {
+      this.props.getProfile(username);
+    }
   }
 
   render() {
@@ -97,12 +113,13 @@ class ProfileContainer extends Component {
             <h2>Followers</h2>
             <div>
               {followers.map(follower => (
-                <StyledCardUser
-                  key={follower.node_id}
-                  bgPhoto={follower.avatar_url}
-                  title={follower.login}
-                  url={follower.html_url}
-                />
+                <Link key={follower.node_id} url={follower.login}>
+                  <StyledCardUser
+                    bgPhoto={follower.avatar_url}
+                    title={follower.login}
+                    url={follower.html_url}
+                  />
+                </Link>
               ))}
             </div>
           </FollowersWrapper>
