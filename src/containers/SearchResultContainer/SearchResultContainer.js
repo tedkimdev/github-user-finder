@@ -24,8 +24,8 @@ const SearchResultContainer = ({ users, totalResults, pagination }) => {
       <UserList users={users} />
       {users.length > 0 && (
         <div>
-          <div>next {pagination.next.url}</div>
-          <div>last {pagination.last.url}</div>
+          {pagination.next.url && <div>next {pagination.next.url}</div>}
+          {pagination.last.url && <div>last {pagination.last.url}</div>}
         </div>
       )}
     </React.Fragment>

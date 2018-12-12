@@ -4,22 +4,22 @@ import styled, { css } from "styled-components";
 
 import UserImage from "./UserImage";
 
-import { mobile, phone } from "../../utils/media";
+import { medium, large } from "../../utils/media";
 import rem from "../../utils/rem";
 
 const StyledLink = styled(Link)`
-  flex: 1 1 calc(100% / 4 - 40px);
-  max-width: calc(100% / 4 - 40px);
-  ${mobile(
+  flex: 1 1 calc(100% - 40px);
+
+  box-sizing: border-box;
+
+  ${medium(
     css`
-      flex: 1 1 calc(100% / 3 - 32px);
-      max-width: calc(100% / 3 - 32px);
+      flex: 1 1 360px;
     `
   )};
-  ${phone(
+  ${large(
     css`
-      flex-basis: calc(100% - 16px);
-      max-width: calc(100% - 16px);
+      flex: 0 0 360px;
     `
   )};
 
