@@ -3,10 +3,10 @@ import React from "react";
 import PageTemplate from "../components/PageTemplate";
 import ProfileContainer from "../containers/ProfileContainer/ProfileContainer";
 
-const ProfilePage = () => {
+const ProfilePage = ({ match }) => {
   return (
     <PageTemplate>
-      <ProfileContainer />
+      <ProfileContainer {...match.params} />
     </PageTemplate>
   );
 };

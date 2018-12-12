@@ -1,64 +1,81 @@
 import React from "react";
 
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { medium, large } from "../../utils/media";
 
 import UserImage from "../UserList/UserImage";
+import ProfileTitle from "./ProfileTitle";
+import ProfileInfo from "./ProfileInfo";
+import ProfileBottom from "./ProfileBottom";
 
 const Wrapper = styled.div`
-  width: 960px;
   margin: 10px auto;
   overflow: hidden;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+
+  ${RightWrapper} {
+    flex: 1 100%;
+  }
+
+  ${medium(css``)};
+
+  ${large(css``)};
 `;
 
 const LeftWrapper = styled.div`
   width: 220px;
   height: 220px;
-  float: left;
+  flex: 0 0 220px;
+  border-radius: 8px;
+  overflow: hidden;
 `;
 
 const RightWrapper = styled.div`
-  width: 730px;
-  float: right;
+  padding: 16px;
+
+  box-sizing: border-box;
+  width: auto;
+
+  ${large(css`
+    height: 220px;
+    position: relative;
+  `)};
+`;
+
+const ProfileBottomWrapper = styled(ProfileBottom)`
+  ${large(css`
+    position: absolute;
+    bottom: 0;
+  `)};
 `;
 
 const ProfileHeader = ({ userProfile }) => {
-  console.log(userProfile);
   return (
     <Wrapper>
       <LeftWrapper>
         <UserImage url={userProfile.avatar_url} name={userProfile.login} />
       </LeftWrapper>
       <RightWrapper>
-        <div>
-          <h1>{userProfile.name}</h1>
-          <p>{userProfile.login}</p>
-        </div>
-        <div>
-          <p>{userProfile.bio}</p>
-        </div>
-        <div>
-          <ul>
-            <li>{userProfile.location}</li>
-            <li>{userProfile.company}</li>
-            <li>{userProfile.blog}</li>
-          </ul>
-        </div>
-        <div>
-          <ul>
-            <li>
-              {userProfile.public_repos} <p>repositories</p>
-            </li>
-            <li>
-              {userProfile.followers} <p>followers</p>
-            </li>
-            <li>
-              {userProfile.following} <p>following</p>
-            </li>
-            <li>
-              {userProfile.public_gists} <p>gists</p>
-            </li>
-          </ul>
-        </div>
+        <ProfileTitle
+          name={userProfile.name}
+          userLink={userProfile.html_url}
+          username={userProfile.login}
+        />
+        <ProfileInfo
+          bio={userProfile.bio}
+          company={userProfile.company}
+          location={userProfile.location}
+          blog={userProfile.blog}
+        />
+        <ProfileBottomWrapper
+          repos={userProfile.public_repos}
+          followers={userProfile.followers}
+          following={userProfile.following}
+          gists={userProfile.public_gists}
+        />
       </RightWrapper>
     </Wrapper>
   );

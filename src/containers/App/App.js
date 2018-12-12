@@ -12,7 +12,7 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/search" component={Home} />
-          <Route exact path="/user/:username" component={ProfilePage} />
+          <Route path="/user/:username" component={ProfilePage} />
           <Redirect to="/search" />
           <GlobalStyles />
         </Switch>

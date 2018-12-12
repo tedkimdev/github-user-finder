@@ -32,33 +32,32 @@ const ProfileContent = styled.div`
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
-
   ${RepositoriesWrapper} {
     padding: 12px;
     flex: 1 100%;
-    background: gold;
+    box-sizing: border-box;
   }
   ${FollowersWrapper} {
     padding: 12px;
     flex: 1 100%;
-    background: green;
+    box-sizing: border-box;
   }
 
   ${medium(css`
     ${RepositoriesWrapper} {
-      flex: 0 40%;
+      flex: 0 50%;
     }
     ${FollowersWrapper} {
-      flex: 0 40%;
+      flex: 0 50%;
     }
   `)};
 
   ${large(css`
     ${RepositoriesWrapper} {
-      flex: 0 30%;
+      flex: 0 40%;
     }
     ${FollowersWrapper} {
-      flex: 0 30%;
+      flex: 0 40%;
     }
   `)};
 `;
@@ -66,21 +65,18 @@ const Wrapper = styled.div``;
 
 class ProfileContainer extends Component {
   componentDidMount() {
-    const { match } = this.props;
-    const { username } = match.params;
-
-    //TODO: click
-    console.log("componentDidMount", this.props.isLoading);
-    console.log("componentDidMount", username);
+    const { username } = this.props;
     this.props.getProfile(username);
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const prevUsername = prevProps.match.params.username;
-    const { username } = this.props.match.params;
-    console.log(prevUsername, username);
-    if (prevUsername !== username) {
+    //TODO: need to check whether call api twice?
+    if (this.props.isLoading) return;
+    if (this.props.error) return;
+    const { username } = this.props;
+    if (username !== this.props.userProfile.login) {
       this.props.getProfile(username);
+      window.scrollTo(0, 0);
     }
   }
 
@@ -129,12 +125,15 @@ class ProfileContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  userProfile: state.profile.userProfile,
-  isLoading: state.profile.isLoading,
-  followers: state.follower.followers,
-  repositories: state.repository.repositories
-});
+const mapStateToProps = state => {
+  return {
+    userProfile: state.profile.userProfile,
+    isLoading: state.profile.isLoading,
+    followers: state.follower.followers,
+    repositories: state.repository.repositories,
+    error: state.profile.error
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   getProfile: username => {
@@ -145,4 +144,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withRouter(ProfileContainer));
+)(ProfileContainer);
