@@ -1,21 +1,25 @@
 import { takeLatest, call, put } from "redux-saga/effects";
 import { searchActions, searchTypes } from "../store/modules/search";
 import { requestLimitActions } from "../store/modules/requestLimit";
+import qs from "query-string";
 
 import GitHubAPI from "../api/GitHubAPIService";
 
 export function* searchUsersCallBack(action) {
   console.log(action);
-  const { keyword } = action;
+  const { searchQuery } = action;
 
-  yield GitHubAPI.searchUsersAsyncAwaitCallBack(keyword, result => {
+  yield GitHubAPI.searchUsersAsyncAwaitCallBack(searchQuery, result => {
     // do something
   });
 }
 
 export function* searchUsers(action) {
-  const keyword = action.payload;
-  const { response, error } = yield call(GitHubAPI.searchUsers, keyword);
+  const searchQuery = action.payload;
+  const { response, error } = yield call(
+    GitHubAPI.searchUsers,
+    qs.parse(searchQuery)
+  );
 
   if (response) {
     // console.log(response);

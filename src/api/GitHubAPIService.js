@@ -3,11 +3,9 @@ import parseLinkHeader from "parse-link-header";
 
 require("dotenv").config();
 
-const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
+export const PER_PAGE = 48;
 
-const defaultParams = {
-  per_page: 48
-};
+const token = process.env.REACT_APP_GITHUB_PERSONAL_ACCESS_TOKEN;
 
 // console.log(token);
 const instance = axios.create({
@@ -32,6 +30,9 @@ const instance = axios.create({
 // }
 
 const searchUsersPromiseCallback = (keyword, completion, params) => {
+  const defaultParams = {
+    per_page: PER_PAGE
+  };
   return instance
     .get(`/search/users?q=${keyword}`, {
       params: defaultParams
@@ -48,6 +49,9 @@ const searchUsersPromiseCallback = (keyword, completion, params) => {
 };
 
 const searchUsersAsyncAwaitCallBack = async (keyword, completion, params) => {
+  const defaultParams = {
+    per_page: PER_PAGE
+  };
   try {
     const response = await instance.get(`/search/users?q=${keyword}`, {
       params: defaultParams
@@ -62,10 +66,14 @@ const searchUsersAsyncAwaitCallBack = async (keyword, completion, params) => {
   }
 };
 
-const searchUsers = async (keyword, params) => {
+const searchUsers = async params => {
+  const defaultParams = {
+    per_page: PER_PAGE
+  };
+
   try {
-    const response = await instance.get(`/search/users?q=${keyword}`, {
-      params: defaultParams
+    const response = await instance.get("/search/users", {
+      params: { ...defaultParams, ...params }
     });
 
     return { response: addPagination(response) };
@@ -140,7 +148,7 @@ const getRateLimit = async () => {
   }
 };
 
-const getDataFromURL = async (url, perPage) => {
+const getDataFromURL = async (url, perPage = PER_PAGE) => {
   try {
     const response = await instance.get(url, {
       params: {

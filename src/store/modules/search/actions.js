@@ -1,8 +1,8 @@
 import types from "./types";
 
-export const searchRequest = keyword => ({
+export const searchRequest = searchQuery => ({
   type: types.SEARCH_REQUEST,
-  payload: keyword
+  payload: searchQuery
 });
 
 export const searchSuccess = result => ({

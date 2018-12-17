@@ -43,14 +43,14 @@ const StyledDiv = styled.div`
   padding: 0 0.5rem;
 `;
 
-const Header = ({ onSearchRequest }) => {
+const Header = ({ onSubmit }) => {
   return (
     <Wrapper>
       <Link to="/">
         <GreyGithub />
       </Link>
       <StyledDiv>Search User via the GitHub API</StyledDiv>
-      <SearchForm onSearchRequest={onSearchRequest} />
+      <SearchForm onSubmit={onSubmit} />
     </Wrapper>
   );
 };

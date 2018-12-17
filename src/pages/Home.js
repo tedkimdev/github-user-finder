@@ -3,9 +3,9 @@ import React from "react";
 import PageTemplate from "../components/PageTemplate";
 import SearchResultContainer from "../containers/SearchResultContainer";
 
-const Home = () => {
+const Home = props => {
   return (
-    <PageTemplate>
+    <PageTemplate {...props}>
       <SearchResultContainer />
     </PageTemplate>
   );

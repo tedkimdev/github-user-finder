@@ -46,7 +46,7 @@ const Input = styled.input`
   }
 `;
 
-const Button = styled.label.attrs({
+const Button = styled.button.attrs({
   htmlFor: INPUT_ID
 })`
   ${resetInput};
@@ -76,28 +76,16 @@ class SearchForm extends Component {
     this.inputRef = React.createRef();
   }
 
-  handleKeyPress = e => {
-    const { onSearchRequest } = this.props;
-    const { input } = this.state;
-    if (input === "") return;
-    if (e.key === "Enter") {
-      onSearchRequest(input);
-    }
-  };
-
   handleChange = e => {
     this.setState(setInputValue(e.target.value));
   };
 
   handleSubmit = e => {
     e.preventDefault();
-  };
-
-  handleClick = () => {
-    const { onSearchRequest } = this.props;
+    const { onSubmit } = this.props;
     const { input } = this.state;
     if (input === "") return;
-    onSearchRequest(input);
+    onSubmit(input);
   };
 
   render() {
@@ -111,11 +99,10 @@ class SearchForm extends Component {
             this.inputRef.current.focus();
           }}
           onChange={this.handleChange}
-          onKeyPress={this.handleKeyPress}
           value={this.state.input}
           type="text"
         />
-        <Button onClick={this.handleClick}>
+        <Button type="submit">
           <GreySearch />
         </Button>
       </FormWrapper>

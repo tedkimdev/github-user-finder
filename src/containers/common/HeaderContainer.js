@@ -6,20 +6,35 @@ import Header from "../../components/Header";
 import { searchActions } from "../../store/modules/search";
 
 class HeaderContainer extends Component {
-  //TODO: query string,
-  // location, history, match
-}
+  componentDidMount() {
+    const { searchQuery } = this.props;
+    this.handleSearchUser(searchQuery);
+  }
 
-// const mapStateToProps = state => {
-//   return {
-//     keyword: state.search.keyword
-//   }
-// }
+  componentDidUpdate(prevProps, prevState) {
+    const { searchQuery } = this.props;
+    if (searchQuery !== prevProps.searchQuery) {
+      this.handleSearchUser(searchQuery);
+      window.scrollTo(0, 0);
+    }
+  }
+
+  handleSearchUser = searchQuery => {
+    if (!searchQuery) return;
+    this.props.onSearchRequest(searchQuery);
+  };
+
+  render() {
+    const { onSubmit, searchKeyword } = this.props;
+
+    return <Header onSubmit={onSubmit} />;
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
-    onSearchRequest: keyword => {
-      dispatch(searchActions.searchRequest(keyword));
+    onSearchRequest: searchQuery => {
+      dispatch(searchActions.searchRequest(searchQuery));
     }
   };
 };
@@ -27,4 +42,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   null,
   mapDispatchToProps
-)(withRouter(Header));
+)(HeaderContainer);

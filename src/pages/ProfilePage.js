@@ -3,9 +3,9 @@ import React from "react";
 import PageTemplate from "../components/PageTemplate";
 import ProfileContainer from "../containers/ProfileContainer/ProfileContainer";
 
-const ProfilePage = ({ match }) => {
+const ProfilePage = ({ match, history, location }) => {
   return (
-    <PageTemplate>
+    <PageTemplate history={history} location={location}>
       <ProfileContainer {...match.params} />
     </PageTemplate>
   );
