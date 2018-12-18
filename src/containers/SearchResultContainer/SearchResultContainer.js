@@ -27,13 +27,15 @@ const SearchResultContainer = ({
   const search = qs.parse(location.search);
   return (
     <React.Fragment>
-      {users.length > 0 && (
-        <SearchResultCount>{`'${
-          search.q
-        }' Found ${totalResults} users`}</SearchResultCount>
+      {search.q && (
+        <React.Fragment>
+          <SearchResultCount>{`'${
+            search.q
+          }' Found ${totalResults} users`}</SearchResultCount>
+          <UserList users={users} />
+          <Pagination pagination={pagination} page={search.page} />
+        </React.Fragment>
       )}
-      <UserList users={users} />
-      <Pagination pagination={pagination} page={search.page} />
     </React.Fragment>
   );
 };
