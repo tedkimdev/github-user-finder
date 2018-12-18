@@ -5,6 +5,7 @@ import qs from "query-string";
 
 import styled from "styled-components";
 import rem from "../../utils/rem";
+import { navbarHeight } from "../../constants/sizes";
 
 import Pagination from "../../components/Pagination";
 
@@ -14,6 +15,10 @@ const SearchResultCount = styled.div`
   text-align: center;
   font-size: ${rem(24)};
   font-weight: 600;
+`;
+
+const NoContent = styled.div`
+  height: calc(100vh - ${rem(navbarHeight)} - 20px);
 `;
 
 // profile actions
@@ -27,7 +32,7 @@ const SearchResultContainer = ({
   const search = qs.parse(location.search);
   return (
     <React.Fragment>
-      {search.q && (
+      {search.q ? (
         <React.Fragment>
           <SearchResultCount>{`'${
             search.q
@@ -35,8 +40,9 @@ const SearchResultContainer = ({
           <UserList users={users} />
           <Pagination pagination={pagination} page={search.page} />
         </React.Fragment>
+      ) : (
+        <NoContent />
       )}
-      {/* TODO: default search result */}
     </React.Fragment>
   );
 };
