@@ -4,9 +4,10 @@ import PageTemplate from "../components/PageTemplate";
 import SearchResultContainer from "../containers/SearchResultContainer";
 
 const Home = props => {
+  const { location } = props;
   return (
     <PageTemplate {...props}>
-      <SearchResultContainer />
+      <SearchResultContainer location={location} />
     </PageTemplate>
   );
 };

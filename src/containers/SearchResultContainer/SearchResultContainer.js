@@ -1,9 +1,12 @@
 import React from "react";
 import UserList from "../../components/UserList";
 import { connect } from "react-redux";
+import qs from "query-string";
 
 import styled from "styled-components";
 import rem from "../../utils/rem";
+
+import Pagination from "../../components/Pagination";
 
 const SearchResultCount = styled.div`
   margin: 0 auto;
@@ -15,19 +18,22 @@ const SearchResultCount = styled.div`
 
 // profile actions
 
-const SearchResultContainer = ({ users, totalResults, pagination }) => {
+const SearchResultContainer = ({
+  users,
+  totalResults,
+  pagination,
+  location
+}) => {
+  const search = qs.parse(location.search);
   return (
     <React.Fragment>
       {users.length > 0 && (
-        <SearchResultCount>Found {totalResults} users</SearchResultCount>
+        <SearchResultCount>{`'${
+          search.q
+        }' Found ${totalResults} users`}</SearchResultCount>
       )}
       <UserList users={users} />
-      {users.length > 0 && (
-        <div>
-          {/* {pagination.next && <div>next {pagination.next.url}</div>} */}
-          {/* {pagination.last && <div>last {pagination.last.url}</div>} */}
-        </div>
-      )}
+      <Pagination pagination={pagination} page={search.page} />
     </React.Fragment>
   );
 };
