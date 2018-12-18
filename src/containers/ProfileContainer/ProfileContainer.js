@@ -10,6 +10,7 @@ import styled, { css } from "styled-components";
 import { medium, large } from "../../utils/media";
 
 import CardUser from "../../components/CardUser";
+import RepositoryList from "../../components/RepositoryList";
 import Link from "../../components/Link";
 
 const StyledCardUser = styled(CardUser)`
@@ -92,18 +93,9 @@ class ProfileContainer extends Component {
         <ProfileContent>
           <RepositoriesWrapper>
             <h2>Repositories</h2>
-            <ul>
-              {repositories.map(repository => (
-                <li key={repository.node_id}>
-                  <p>{repository.name}</p>
-                  <p>{repository.forks_count}</p>
-                  <p>{repository.startgazers_count}</p>
-                  <p>{repository.watchers_count}</p>
-                  <p>{repository.language}</p>
-                  <p>{repository.html_url}</p>
-                </li>
-              ))}
-            </ul>
+            <div>
+              <RepositoryList repositories={repositories} />
+            </div>
           </RepositoriesWrapper>
           <FollowersWrapper>
             <h2>Followers</h2>

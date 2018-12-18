@@ -36,6 +36,7 @@ const SearchResultContainer = ({
           <Pagination pagination={pagination} page={search.page} />
         </React.Fragment>
       )}
+      {/* TODO: default search result */}
     </React.Fragment>
   );
 };

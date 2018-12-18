@@ -1,12 +1,33 @@
 import React from "react";
+import styled from "styled-components";
+
+const StyledFooter = styled.footer`
+  position: relative;
+  height: 20px;
+  line-height: 20px;
+  ul {
+    float: right;
+    list-style: none;
+    padding: 0;
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+  li {
+    display: inline-block;
+    margin-right: 30px;
+  }
+`;
 
 const Footer = ({ requestLimit }) => {
   return (
-    <footer>
-      <div>total: {requestLimit.remaining}</div>
-      <div>core: {requestLimit.core}</div>
-      <div>search: {requestLimit.search}</div>
-    </footer>
+    <StyledFooter>
+      <ul>
+        <li>API REQUEST</li>
+        <li>total: {requestLimit.remaining}</li>
+        <li>core: {requestLimit.core}</li>
+        <li>search: {requestLimit.search}</li>
+      </ul>
+    </StyledFooter>
   );
 };
 
