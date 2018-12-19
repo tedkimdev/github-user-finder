@@ -8,18 +8,19 @@ import { medium, large } from "../../utils/media";
 import rem from "../../utils/rem";
 
 const StyledLink = styled(Link)`
-  flex: 1 1 calc(100% - 40px);
+  flex: 0 0 calc(100% - 40px);
 
   box-sizing: border-box;
 
   ${medium(
     css`
-      flex: 1 1 360px;
+      flex: 0 0 360px;
     `
   )};
   ${large(
     css`
-      flex: 0 0 360px;
+      flex: 0 0;
+      min-width: 360px;
     `
   )};
 
