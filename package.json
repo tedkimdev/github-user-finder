@@ -1,5 +1,6 @@
 {
-  "name": "github-search",
+  "homepage": "http://00aney.github.io/github-user-finder",
+  "name": "github-search-finder",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -23,7 +24,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -36,6 +39,7 @@
   ],
   "devDependencies": {
     "eslint-plugin-prettier": "^3.0.0",
+    "gh-pages": "^2.0.1",
     "prettier": "1.15.2"
   }
 }
