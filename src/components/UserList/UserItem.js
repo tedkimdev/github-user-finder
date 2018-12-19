@@ -44,6 +44,7 @@ const StyledDiv = styled.div`
   overflow: hidden;
   color: black;
   font-size: ${rem(24)};
+  font-weight: 800;
 `;
 
 const UserItem = ({ user }) => {

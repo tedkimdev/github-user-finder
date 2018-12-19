@@ -10,7 +10,7 @@ import { resetInput } from "../../utils/form";
 const INPUT_ID = "user-search-input";
 
 const GreySearch = styled(Search)`
-  color: grey;
+  color: whitesmoke;
   width: 2rem;
   height: 2rem;
 `;
@@ -31,7 +31,7 @@ const Input = styled.input`
   padding: 0.5em;
   margin: 0.5em;
   color: palevioletred;
-  background: papayawhip;
+  background: whitesmoke;
   border-radius: 3px;
 
   ::placeholder {

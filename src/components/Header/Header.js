@@ -11,7 +11,7 @@ import { navbarHeight } from "../../constants/sizes";
 import SearchForm from "./SearchForm";
 
 const GreyGithub = styled(Github)`
-  color: grey;
+  color: whitesmoke;
   height: 2rem;
   width: 2rem;
 `;
@@ -29,9 +29,8 @@ const Wrapper = styled.div`
 
   font-size: ${rem(18)};
   font-weight: 600;
-  background: ${props => (props.transparent ? "transparent" : "black")};
-  transition: background 300ms ease-out;
-  color: white;
+  background: rgb(32, 36, 40);
+  color: whitesmoke;
 
   display: flex;
   align-items: center;
@@ -49,7 +48,7 @@ const Header = ({ onSubmit }) => {
       <Link to="/">
         <GreyGithub />
       </Link>
-      <StyledDiv>Search User via the GitHub API</StyledDiv>
+      <StyledDiv>GitHub User Finder</StyledDiv>
       <SearchForm onSubmit={onSubmit} />
     </Wrapper>
   );

@@ -10,6 +10,7 @@ import ProfileBottom from "./ProfileBottom";
 
 const Wrapper = styled.div`
   margin: 10px auto;
+  padding: 0 20px;
   overflow: hidden;
 
   display: flex;
@@ -21,8 +22,6 @@ const Wrapper = styled.div`
   }
 
   ${medium(css``)};
-
-  ${large(css``)};
 `;
 
 const LeftWrapper = styled.div`
@@ -38,19 +37,15 @@ const RightWrapper = styled.div`
 
   box-sizing: border-box;
   width: auto;
-
+  ${medium(css`
+    width: calc(80% - 220px);
+  `)};
   ${large(css`
     height: 220px;
-    position: relative;
   `)};
 `;
 
-const ProfileBottomWrapper = styled(ProfileBottom)`
-  ${large(css`
-    position: absolute;
-    bottom: 0;
-  `)};
-`;
+const ProfileBottomWrapper = styled(ProfileBottom)``;
 
 const ProfileHeader = ({ userProfile }) => {
   return (

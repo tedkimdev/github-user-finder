@@ -13,15 +13,18 @@ const SearchResultCount = styled.div`
   margin: 0 auto;
   margin-top: 8px;
   text-align: center;
-  font-size: ${rem(24)};
+  font-size: ${rem(18)};
   font-weight: 600;
+
+  padding: 1rem 0;
 `;
 
 const NoContent = styled.div`
   height: calc(100vh - ${rem(navbarHeight)} - 20px);
 `;
 
-// profile actions
+const numberWithCommas = number =>
+  number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
 const SearchResultContainer = ({
   users,
@@ -34,9 +37,9 @@ const SearchResultContainer = ({
     <React.Fragment>
       {search.q ? (
         <React.Fragment>
-          <SearchResultCount>{`'${
-            search.q
-          }' Found ${totalResults} users`}</SearchResultCount>
+          <SearchResultCount>{`${numberWithCommas(
+            totalResults
+          )} users found for '${search.q}'`}</SearchResultCount>
           <UserList users={users} />
           <Pagination pagination={pagination} page={search.page} />
         </React.Fragment>

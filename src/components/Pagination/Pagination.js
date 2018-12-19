@@ -9,33 +9,73 @@ const createPagePath = query => {
   return `/search?${query}`;
 };
 
+const Wrapper = styled.div`
+  width: 400px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+
+  box-sizing: border-box;
+
+  div {
+    font-size: 0.85rem;
+    text-align: center;
+    font-weight: 600;
+    color: black;
+    flex: 1;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  flex: 1;
+
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: rgb(117, 117, 117);
+  user-select: none;
+  text-align: center;
+
+  &:hover {
+    color: rgb(150, 150, 150);
+  }
+`;
+
 const Pagination = ({ pagination, page }) => {
   if (!pagination) return null;
 
   return (
-    <div>
-      {pagination.first && (
-        <Link to={createPagePath(getSearchQuery(pagination.first.url))}>
+    <Wrapper>
+      {pagination.first ? (
+        <StyledLink to={createPagePath(getSearchQuery(pagination.first.url))}>
           first
-        </Link>
+        </StyledLink>
+      ) : (
+        <div />
       )}
-      {pagination.prev && (
-        <Link to={createPagePath(getSearchQuery(pagination.prev.url))}>
+      {pagination.prev ? (
+        <StyledLink to={createPagePath(getSearchQuery(pagination.prev.url))}>
           prev
-        </Link>
+        </StyledLink>
+      ) : (
+        <div />
       )}
       <div>Page {page}</div>
-      {pagination.next && (
-        <Link to={createPagePath(getSearchQuery(pagination.next.url))}>
+      {pagination.next ? (
+        <StyledLink to={createPagePath(getSearchQuery(pagination.next.url))}>
           next
-        </Link>
+        </StyledLink>
+      ) : (
+        <div />
       )}
-      {pagination.last && (
-        <Link to={createPagePath(getSearchQuery(pagination.last.url))}>
+      {pagination.last ? (
+        <StyledLink to={createPagePath(getSearchQuery(pagination.last.url))}>
           last
-        </Link>
+        </StyledLink>
+      ) : (
+        <div />
       )}
-    </div>
+    </Wrapper>
   );
 };
 

@@ -11,7 +11,7 @@ const Container = styled.div`
 
   width: 100%;
   background: white;
-  margin-bottom: 10px;
+  margin: 10px 0;
 `;
 
 const Photo = styled.div`
@@ -39,8 +39,8 @@ const Content = styled.div`
 `;
 
 const Title = styled.span`
-  font-size: 24px;
-  font-weight: 900;
+  font-size: 20px;
+  font-weight: 800;
   color: ${props => props.color};
   display: block;
   height: 48px;

@@ -15,7 +15,7 @@ const StyledFooter = styled.footer`
   }
   li {
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 20px;
   }
 `;
 

@@ -16,16 +16,18 @@ import Link from "../../components/Link";
 const StyledCardUser = styled(CardUser)`
   height: 80px;
 `;
+
 const RepositoriesWrapper = styled.div`
   & > h2 {
+    font-size: 24px;
+    font-weight: 600;
   }
-  ${medium(css``)};
 `;
 
 const FollowersWrapper = styled.div`
   & > h2 {
-  }
-  & > div {
+    font-size: 24px;
+    font-weight: 600;
   }
 `;
 
@@ -62,6 +64,7 @@ const ProfileContent = styled.div`
     }
   `)};
 `;
+
 const Wrapper = styled.div``;
 
 class ProfileContainer extends Component {
