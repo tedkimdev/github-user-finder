@@ -39,13 +39,19 @@ const RightWrapper = styled.div`
   width: auto;
   ${medium(css`
     width: calc(80% - 220px);
+    position: relative;
   `)};
   ${large(css`
     height: 220px;
   `)};
 `;
 
-const ProfileBottomWrapper = styled(ProfileBottom)``;
+const ProfileBottomWrapper = styled(ProfileBottom)`
+  ${medium(css`
+    position: absolute;
+    bottom: 0;
+  `)};
+`;
 
 const ProfileHeader = ({ userProfile }) => {
   return (
