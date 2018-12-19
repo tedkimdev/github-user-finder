@@ -3,7 +3,6 @@ import React, { Component } from "react";
 import styled, { css, createGlobalStyle } from "styled-components";
 import { Search } from "styled-icons/material";
 
-import { mobile, phone } from "../../utils/media";
 import rem from "../../utils/rem";
 import { resetInput } from "../../utils/form";
 
@@ -30,7 +29,7 @@ const Input = styled.input`
 
   padding: 0.5em;
   margin: 0.5em;
-  color: palevioletred;
+  color: darkgray;
   background: whitesmoke;
   border-radius: 3px;
 
@@ -101,6 +100,7 @@ class SearchForm extends Component {
           onChange={this.handleChange}
           value={this.state.input}
           type="text"
+          autoComplete="off"
         />
         <Button type="submit">
           <GreySearch />
