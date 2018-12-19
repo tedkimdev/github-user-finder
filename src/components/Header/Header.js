@@ -17,6 +17,7 @@ const GreyGithub = styled(Github)`
 `;
 
 const Wrapper = styled.div`
+  font-family: sans-serif;
   position: fixed;
   top: 0;
   left: 0;

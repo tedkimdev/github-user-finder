@@ -11,6 +11,7 @@ import HeaderContainer from "../../containers/common/HeaderContainer";
 import FooterContainer from "../../containers/common/FooterContainer";
 
 const MainWrapper = styled.main`
+  font-family: sans-serif;
   background: rgba(240, 240, 240);
 
   padding-top: ${rem(navbarHeight + 30)};

@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledFooter = styled.footer`
+  font-family: sans-serif;
   border-top: 1px solid black;
   position: relative;
   height: 20px;
