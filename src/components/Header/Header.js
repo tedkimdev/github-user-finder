@@ -38,6 +38,8 @@ const Wrapper = styled.div`
   justify-content: center;
 
   flex-flow: row wrap;
+
+  z-index: 2;
 `;
 const StyledDiv = styled.div`
   padding: 0 0.5rem;
