@@ -1,6 +1,6 @@
 # Github User Finder
 
-Search and view users by Github API - https://00aney.github.io/github-user-finder
+Search and view users by Github API - https://pdevted.github.io/github-user-finder
 
 A personal project built with React, Redux and other tools.
 
